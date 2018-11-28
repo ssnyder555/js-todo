@@ -46,9 +46,26 @@ const removeTodo = (e) => {
   const $todo = $(e.currentTarget).parent();
 
   $todo.velocity('transition.slideUpOut', 2000, (elem) => {
+    console.log(elem, ' this is elem');
     $(elem).remove();
   })
   // grab the div, animate, then remove it( maybe the remove happens in a call back)
 
 
 }
+
+
+// just playing regular velocity
+
+$('img').velocity({
+  perspective: [215, 50],
+  rotateX: 360,
+  translateX: 60,
+  opacity: [1, 0.55],
+  height: '+=350',
+  width: "+=350"
+}, {
+  duration: 4000,
+  loop: 5,
+  delay: 10
+});
