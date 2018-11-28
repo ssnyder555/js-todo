@@ -25,7 +25,9 @@ const createTodo = (inputVal) => {
   // $div.append($h5)
 
 // create a button with the text of add // TODO:
-  const $button = $('<button/>')
+  const $button = $('<button/>').on('click', completedTodo);
+
+
 
   $button.text('completed');
 //append theses in the correct order, and to the
@@ -33,4 +35,26 @@ const createTodo = (inputVal) => {
 $div.append($button);
 
 $('#col-1').append($div);
+}
+
+
+const completedTodo = (e) => {
+  console.log(event.currentTarget);
+// grabbig the whole todo
+  const $currentTodo = $(event.currentTarget).parent();
+
+  console.log($currentTodo);
+  $('#col-2').append($currentTodo);
+
+  $(event.currentTarget).text('delete');
+
+  $(event.currentTarget).off('click').on('click', removeTodo);
+
+  }
+
+
+const removeTodo = (e) => {
+  // button is e.currentTarget
+  $(e.currentTarget).parent().remove();
+
 }
