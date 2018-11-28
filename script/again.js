@@ -23,8 +23,8 @@ const createTodo = (inputVal) => {
 
   $div.append($button);
   $div.velocity('transition.flipYIn', {
-    display: null,
-    duration: 5000});
+                                        display: null,
+                                        duration: 2000});
 
 
   $('#col-1').append($div);
@@ -42,5 +42,13 @@ const completedTodo = (e) => {
 }
 
 const removeTodo = (e) => {
-  $(e.currentTarget).parent().remove();
+  // $(e.currentTarget).parent().remove();
+  const $todo = $(e.currentTarget).parent();
+
+  $todo.velocity('transition.slideUpOut', 2000, (elem) => {
+    $(elem).remove();
+  })
+  // grab the div, animate, then remove it( maybe the remove happens in a call back)
+
+
 }
